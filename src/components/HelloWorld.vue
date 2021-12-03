@@ -4,7 +4,7 @@
   <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
 </template>
 
-<script>
+<script lang="tsx">
 export default {
   name: 'HelloWorld',
   props: {
