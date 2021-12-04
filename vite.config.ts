@@ -1,10 +1,8 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-
+import styleImport from 'vite-plugin-style-import'
+import ViteComponents, { ElementPlusResolver } from 'vite-plugin-components'
 export default defineConfig({
     server: {
         open: true,
@@ -25,11 +23,21 @@ export default defineConfig({
     },
     plugins: [
         vue(),
-        AutoImport({
-            resolvers: [ElementPlusResolver()],
+        // 按需倒入element-plus组件
+        ViteComponents({
+            customComponentResolvers: [ElementPlusResolver()]
         }),
-        Components({
-            resolvers: [ElementPlusResolver()],
-        }),
+        // 按需倒入element-plus样式
+        styleImport({
+            libs: [
+                {
+                    libraryName: 'element-plus',
+                    esModule: true,
+                    resolveStyle: name => {
+                        return `element-plus/lib/theme-chalk/${name}.css`
+                    }
+                }
+            ]
+        })
     ]
 })

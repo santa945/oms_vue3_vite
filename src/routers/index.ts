@@ -1,8 +1,23 @@
 import { createRouter, createWebHashHistory } from "vue-router";
+const files = import.meta.globEager('./../pages/**/routes.ts')
+
+let modules: any[] = [];
+
+for (const key in files) {
+    if (Object.prototype.hasOwnProperty.call(files, key)) {
+        modules = [...modules, ...files[key].default]
+    }
+}
+
+
 
 const routers = createRouter({
     history: createWebHashHistory(),
-    routes: []
+    routes: [...modules]
 })
 
+routers.beforeEach((to, from, next) => {
+    console.log('from', from);
+    next()
+})
 export default routers
