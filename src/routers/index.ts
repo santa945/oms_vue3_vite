@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 const files = import.meta.globEager('./../pages/**/routes.ts')
+console.log('file-page', files);
 
 let modules: any[] = [];
 
