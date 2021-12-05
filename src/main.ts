@@ -11,5 +11,4 @@ app.mount('#app');
 
 console.log('router', router);
 console.log('store', store);
-
 console.log('实例', app);
