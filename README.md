@@ -14,12 +14,15 @@
 
 ## 报错
 
-* 按需加载的问题
+#### 按需引入的问题
 
-```
+```bash
 [ERR_PACKAGE_PATH_NOT_EXPORTED]: Package subpath './package.json' is not defined by "exports" in /**/node_modules/element-plus/package.json
 
 at __require (/Users/**/node_modules/vite-plugin-components/dist/index.js:27:12)
 at getPkgVersion (/Users/**/node_modules/vite-plugin-components/dist/index.js:634:12)
 ```
-解决方式：未知
+* 解决方式：
+  * 使用手动按需引入的方法代替自动按需引入的方法，不要装`unplugin-vue-components`和`unplugin-auto-import`
+  * 安装`unplugin-element-plus`, 在`vite.config.ts`中配置Plugin。
+  * 全局引入比手动按需引入多800k左右，手动按需引入比自动按需引入多3k而已

@@ -34,14 +34,10 @@
 <script lang="tsx">
 import { defineComponent } from "vue";
 import LeftMenu from './components/LeftMenu/index.vue'
-import {
-    Setting,
-} from '@element-plus/icons'
 export default defineComponent({
     name: 'Main',
     components: {
         LeftMenu,
-        Setting
     },
     setup() {
         return {

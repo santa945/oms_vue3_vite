@@ -50,20 +50,9 @@
 <script lang="tsx">
 import { defineComponent } from "vue";
 import { useRouter } from 'vue-router'
-import {
-    Location,
-    Document,
-    Menu as IconMenu,
-    Setting,
-} from '@element-plus/icons'
 export default defineComponent({
     name: 'LeftMenu',
-    components: {
-        Location,
-        Document,
-        Setting,
-        IconMenu
-    },
+    components: {},
     setup() {
         const handleOpen = (key, keyPath) => {
             console.log(key, keyPath)
