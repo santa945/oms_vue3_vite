@@ -2,8 +2,9 @@
   "name": "oms_vue3_vite",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "vite --mode dev",
+    "build:beta": "vite build --mode beta",
+    "build": "vite build --mode prod"
   },
   "dependencies": {
     "element-plus": "^1.2.0-beta.5",
@@ -18,8 +19,8 @@
     "@types/node": "^16.11.11",
     "@vitejs/plugin-vue": "^1.10.1",
     "@vue/compiler-sfc": "^3.2.23",
-    "vite": "^2.0.5",
-    "vite-plugin-components": "^0.13.3",
-    "vite-plugin-style-import": "^1.4.0"
+    "unplugin-auto-import": "^0.5.1",
+    "unplugin-vue-components": "^0.17.4",
+    "vite": "^2.0.5"
   }
 }

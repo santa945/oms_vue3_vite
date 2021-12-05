@@ -22,4 +22,4 @@
 at __require (/Users/**/node_modules/vite-plugin-components/dist/index.js:27:12)
 at getPkgVersion (/Users/**/node_modules/vite-plugin-components/dist/index.js:634:12)
 ```
-解决方式：使用`vite-plugin-components`和`vite-plugin-style-import`来替代element-plus官网推荐的按需加载插件`unplugin-auto-import`、`unplugin-vue-components`
+解决方式：未知
