@@ -4,9 +4,7 @@ import { resolve } from 'path'
 import ElementPlus from 'unplugin-element-plus/vite'
 
 export default (({ mode }) => {
-    console.log('环境变量', mode);
     console.log('环境变量里的文件对象', loadEnv(mode, process.cwd()));
-
     return defineConfig({
         server: {
             open: true,
@@ -21,7 +19,29 @@ export default (({ mode }) => {
             }
         },
         build: {
-            sourcemap: loadEnv(mode, process.cwd()).VITE_MODE !== 'prod' // 生产环境不要源码文件
+            sourcemap: loadEnv(mode, process.cwd()).VITE_MODE !== 'prod',// 生产环境不要源码文件
+            assetsDir: 'static/',
+            rollupOptions: {
+                output: {
+                    chunkFileNames: 'js/[name]-[hash].js',
+                    entryFileNames: 'js/[name]-[hash].js',
+                    assetFileNames: (assetInfo) => {
+                        const fileName = assetInfo.name
+                        //获取最后一个.的位置
+                        var index = fileName.lastIndexOf(".");
+                        //获取后缀
+                        var ext = fileName.substr(index + 1);
+                        var reg = /(png|jpg|gif|jpeg|webp)$/;
+                        if (ext.toLowerCase() === 'css') {
+                            return 'css/[name]-[hash].[ext]'
+                        } else if (reg.test(ext.toLowerCase())) {
+                            return 'images/[name]-[hash].[ext]'
+                        } else {
+                            return 'static/[ext]/[name]-[hash].[ext]'
+                        }
+                    }
+                },
+            }
         },
         resolve: {
             alias: {
