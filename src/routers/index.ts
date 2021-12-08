@@ -18,7 +18,6 @@ const routers = createRouter({
 })
 
 routers.beforeEach((to, from, next) => {
-    console.log('from', from);
     next()
 })
 export default routers

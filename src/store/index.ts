@@ -1,5 +1,5 @@
 import { createStore } from 'vuex';
-const storefiles = import.meta.globEager('./../modules/**/store.ts')
+const storefiles = import.meta.globEager('./../**/store.ts')
 console.log('storefiles', storefiles);
 
 const modules = {}

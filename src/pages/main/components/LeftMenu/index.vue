@@ -4,71 +4,60 @@
         background-color="#202124"
         text-color="#fff"
         default-active="2"
+        unique-opened
         class="left-menu"
         @open="handleOpen"
         @close="handleClose"
     >
-        <el-sub-menu index="1">
-            <template #title>
-                <el-icon>
-                    <location />
-                </el-icon>
-                <span>Navigator One</span>
-            </template>
-            <el-menu-item-group title="Group One">
-                <el-menu-item index="1-1" @click="goToFallback($event, 'all-orders')">全部订单</el-menu-item>
-                <el-menu-item index="1-2" @click="goToFallback($event, 'order-details')">订单详情</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="Group Two">
-                <el-menu-item index="1-3">item three</el-menu-item>
-            </el-menu-item-group>
-            <el-sub-menu index="1-4">
-                <template #title>item four</template>
-                <el-menu-item index="1-4-1">item one</el-menu-item>
+        <template v-for="item in menuData" :key="item.catalogCode">
+            <el-sub-menu v-if="item.children" :index="item.catalogCode">
+                <template #title>
+                    <el-icon>
+                        <component :is="item.icon" />
+                    </el-icon>
+                    <span>{{ item.catalogName }}</span>
+                </template>
+                <el-menu-item
+                    v-for="i in item.children"
+                    :key="i.catalogCode"
+                    :index="i.catalogCode"
+                    @click="goToPage($event, i.catalogUrl)"
+                >{{ i.catalogName }}</el-menu-item>
             </el-sub-menu>
-        </el-sub-menu>
-        <el-menu-item index="2">
-            <el-icon>
-                <icon-menu />
-            </el-icon>
-            <span>Navigator Two</span>
-        </el-menu-item>
-        <el-menu-item index="3" disabled>
-            <el-icon>
-                <document />
-            </el-icon>
-            <span>Navigator Three</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-            <el-icon>
-                <setting />
-            </el-icon>
-            <span>Navigator Four</span>
-        </el-menu-item>
+            <el-menu-item
+                v-else
+                :index="item.catalogCode"
+                @click="goToPage($event, item.catalogUrl)"
+            >{{ item.catalogName }}</el-menu-item>
+        </template>
     </el-menu>
 </template>
 <script lang="tsx">
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default defineComponent({
     name: 'LeftMenu',
     components: {},
     setup() {
+        const router = useRouter()
+        const store = useStore()
+        const menu = store.getters['auth/menuData']
+        let menuData = reactive(menu)
         const handleOpen = (key, keyPath) => {
             console.log(key, keyPath)
         }
         const handleClose = (key, keyPath) => {
             console.log(key, keyPath)
         }
-        const router = useRouter()
-        const goToFallback = (e, str) => {
-            console.log('d', e, str);
-            router.push(`/main/${str}`)
+        const goToPage = (_, path) => {
+            router.push(path)
         }
         return {
+            menuData,
             handleOpen,
             handleClose,
-            goToFallback
+            goToPage
         }
     },
 })
