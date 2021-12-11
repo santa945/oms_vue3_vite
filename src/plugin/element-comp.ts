@@ -18,6 +18,8 @@ import {
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
+    ElTabs,
+    ElTabPane
 
 } from 'element-plus'
 
@@ -38,6 +40,8 @@ const Comp = {
     Location,
     Document,
     IconMenu,
-    Setting
+    Setting,
+    ElTabs,
+    ElTabPane
 }
 export default Comp;
