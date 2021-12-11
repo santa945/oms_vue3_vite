@@ -42,7 +42,7 @@ export default defineComponent({
     setup() {
         const router = useRouter()
         const store = useStore()
-        const menu = store.getters['auth/menuData']
+        const menu = store.getters['common-data/menuData']
         let menuData = reactive(menu)
         const handleOpen = (key, keyPath) => {
             console.log(key, keyPath)
