@@ -11,12 +11,9 @@ export default {
   name: 'App',
   setup() {
     const store = useStore()
-    console.log('store', store);
-
     onBeforeMount(() => {
-      const user = store.dispatch('common-data/getUserInfo')
-      console.log('user', user);
-
+      // 获取菜单等数据详情
+      store.dispatch('common-data/getUserInfo')
     })
 
     return {

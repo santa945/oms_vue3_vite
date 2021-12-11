@@ -1,6 +1,6 @@
 <template>
     <el-container style="height: 100%;">
-        <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
+        <el-aside width="200px" style="background-color: #202124">
             <div class="logo">
                 <img src="@/assets/logo.png" alt="logo" />
             </div>
@@ -22,7 +22,7 @@
                 </el-dropdown>
                 <span>Tom</span>
             </el-header>
-            <TopTabber />
+            <Topbar />
             <el-main>
                 <div class="main">
                     <router-view></router-view>
@@ -35,12 +35,12 @@
 <script lang="tsx">
 import { defineComponent } from "vue";
 import LeftMenu from './components/LeftMenu/index.vue'
-import TopTabber from './components/TopTabber/index.vue'
+import Topbar from './components/Topbar/index.vue'
 export default defineComponent({
     name: 'Main',
     components: {
         LeftMenu,
-        TopTabber
+        Topbar
     },
     setup() {
         return {
@@ -52,11 +52,6 @@ export default defineComponent({
 <style lang="scss" scoped>
 .logo {
     height: 60px;
-    font-weight: bold;
-    font-size: 40px;
-    background: #202124;
-    color: #fff;
-    margin-right: 1px;
 }
 
 .main {
