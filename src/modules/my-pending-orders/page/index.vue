@@ -1,5 +1,5 @@
 <script lang="ts">
-import AllOrders from '../../all-orders/page/index.vue'
+import AllOrders from '@/modules/all-orders/page/index.vue'
 export default {
     name: 'my-pending-orders',
     extends: AllOrders,
