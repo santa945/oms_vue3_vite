@@ -33,7 +33,9 @@
 </template>
 
 <script lang="tsx">
-import { defineComponent } from "vue";
+import { defineComponent, onBeforeMount } from "vue";
+import { useStore } from 'vuex'
+import { useRoute, useRouter } from 'vue-router'
 import LeftMenu from './components/LeftMenu/index.vue'
 import Topbar from './components/Topbar/index.vue'
 export default defineComponent({
@@ -43,6 +45,22 @@ export default defineComponent({
         Topbar
     },
     setup() {
+        const store = useStore()
+        const router = useRouter()
+        const route = useRoute()
+        const flattenMenu = store.getters['common-data/flattenMenu']
+        const path = route.path
+        onBeforeMount(() => {
+            let item
+            // 如果当前路由是main,重定向到第一个路由
+            if (path === '/main') {
+                item = flattenMenu.find(i => i.catalogUrl)
+            } else {
+                item = flattenMenu.find(i => i.catalogUrl === path)
+            }
+            store.commit('common-data/SET_ACTIVE_ITEM', item)
+            router.push({ name: item.catalogCode })
+        })
         return {
 
         }
