@@ -1,8 +1,10 @@
+
+<template>
+    <div>sssaa</div>
+</template>
 <script lang="ts">
-import AllOrders from '@/modules/all-orders/page/index.vue'
 export default {
     name: 'my-pending-orders',
-    extends: AllOrders,
     setup() {
         return {
 

@@ -25,6 +25,38 @@
                     "catalogUrl": "/main/my-pending-orders"
                 }
             ]
+        },
+        {
+            "catalogName": "业务管理",
+            "icon": "briefcase",
+            "catalogCode": "business-mgm",
+            "children": [
+                {
+                    "catalogName": "项目管理",
+                    "icon": null,
+                    "catalogCode": "project-mgn",
+                    "catalogUrl": "/main/project-mgn"
+                },
+                {
+                    "catalogName": "应用管理",
+                    "icon": null,
+                    "catalogCode": "application-mgm",
+                    "catalogUrl": "/main/application-mgm"
+                }
+            ]
+        },
+        {
+            "catalogName": "配置中心",
+            "icon": "tools",
+            "catalogCode": "configuration",
+            "children": [
+                {
+                    "catalogName": "字典管理",
+                    "icon": null,
+                    "catalogCode": "dictionaries-mgm",
+                    "catalogUrl": "/main/dictionaries-mgm"
+                }
+            ]
         }
     ]
 }

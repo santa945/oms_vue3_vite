@@ -3,6 +3,9 @@ import {
     Document,
     Menu as IconMenu,
     Setting,
+    Briefcase,
+    Tools,
+    Timer
 } from '@element-plus/icons'
 import {
     ElContainer,
@@ -19,11 +22,21 @@ import {
     ElDropdownItem,
     ElDropdownMenu,
     ElTabs,
-    ElTabPane
+    ElTabPane,
+    ElTable,
+    ElTableColumn
 
 } from 'element-plus'
 
 const Comp = {
+    Location,
+    Document,
+    IconMenu,
+    Briefcase,
+    Setting,
+    Tools,
+    Timer,
+
     ElContainer,
     ElAside,
     ElHeader,
@@ -37,11 +50,9 @@ const Comp = {
     ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,
-    Location,
-    Document,
-    IconMenu,
-    Setting,
     ElTabs,
-    ElTabPane
+    ElTabPane,
+    ElTable,
+    ElTableColumn
 }
 export default Comp;

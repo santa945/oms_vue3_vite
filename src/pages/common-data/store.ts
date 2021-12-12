@@ -1,6 +1,7 @@
 import api from './api'
 import { flatten } from '@/scripts/utils'
 import cloneDeep from 'lodash/cloneDeep'
+import router from '@/routers'
 export default {
     name: 'common-data',
     namespaced: true,
@@ -43,6 +44,7 @@ export default {
             // 如果删除的是当前activeItem,则跳转到第一个
             if (state.acitveItem.catalogCode === payload) {
                 Object.assign(state.acitveItem, state.acitveBar[0])
+                router.push(state.acitveBar[0].catalogUrl)
             }
             // 如果删除的是其他item，则不跳转
 
