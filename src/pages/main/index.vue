@@ -9,9 +9,12 @@
         <el-container>
             <el-header style="text-align: right; font-size: 12px">
                 <el-dropdown>
-                    <el-icon style="margin-right: 15px">
-                        <setting />
-                    </el-icon>
+                    <span class="flex">
+                        <span>{{ userName }}</span>
+                        <el-icon style="margin-right: 15px">
+                            <setting />
+                        </el-icon>
+                    </span>
                     <template #dropdown>
                         <el-dropdown-menu>
                             <el-dropdown-item>View</el-dropdown-item>
@@ -20,7 +23,6 @@
                         </el-dropdown-menu>
                     </template>
                 </el-dropdown>
-                <span>Tom</span>
             </el-header>
             <Topbar />
             <el-main>
@@ -33,7 +35,7 @@
 </template>
 
 <script lang="tsx">
-import { defineComponent, onBeforeMount } from "vue";
+import { defineComponent, ref, onBeforeMount } from "vue";
 import { useStore } from 'vuex'
 import { useRoute, useRouter } from 'vue-router'
 import LeftMenu from './components/LeftMenu/index.vue'
@@ -48,6 +50,8 @@ export default defineComponent({
         const store = useStore()
         const router = useRouter()
         const route = useRoute()
+        const userInfo = store.getters['common-data/user']
+        const userName = ref(userInfo.userName)
         const flattenMenu = store.getters['common-data/flattenMenu']
         const path = route.path
         onBeforeMount(() => {
@@ -62,7 +66,7 @@ export default defineComponent({
             router.push({ name: item.catalogCode })
         })
         return {
-
+            userName
         }
     }
 })

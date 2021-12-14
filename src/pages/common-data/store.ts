@@ -40,11 +40,12 @@ export default {
                 return item.catalogCode === payload
             }
             const index = state.acitveBar.findIndex(fn)
+            const item = state.acitveBar[index - 1] || state.acitveBar[index + 1]
             state.acitveBar.splice(index, 1)
-            // 如果删除的是当前activeItem,则跳转到第一个
+            // 如果删除的是当前activeItem,则跳转到相邻那个tab
             if (state.acitveItem.catalogCode === payload) {
-                Object.assign(state.acitveItem, state.acitveBar[0])
-                router.push(state.acitveBar[0].catalogUrl)
+                Object.assign(state.acitveItem, item)
+                router.push(item.catalogUrl)
             }
             // 如果删除的是其他item，则不跳转
 
@@ -58,6 +59,7 @@ export default {
         }
     },
     getters: {
+        user: (state: { [key: string]: any }) => state.user,
         menuData: (state: { [key: string]: any }) => state.menuData,
         flattenMenu: (state: { [key: string]: any }) => state.flattenMenu,
         acitveBar: (state: { [key: string]: any }) => state.acitveBar,

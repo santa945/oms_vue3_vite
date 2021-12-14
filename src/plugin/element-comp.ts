@@ -24,7 +24,8 @@ import {
     ElTabs,
     ElTabPane,
     ElTable,
-    ElTableColumn
+    ElTableColumn,
+    ElTag
 
 } from 'element-plus'
 
@@ -53,6 +54,7 @@ const Comp = {
     ElTabs,
     ElTabPane,
     ElTable,
-    ElTableColumn
+    ElTableColumn,
+    ElTag
 }
 export default Comp;
