@@ -1,26 +1,31 @@
 <template>
     <PageLayout>
         <template #toolbar>
-            <p>我就是具名插槽啦</p>
-            <el-button @click="search">查询</el-button>
-            <el-button>重置</el-button>
+            <QueryForm
+                :formModel="formModel"
+                :formItem="formItem"
+                :buttons="buttons"
+                @btnClick="handleQuery"
+            />
         </template>
-        <Table :column="data.column" :data="data.tableData" @handleClick="say" />
+        <Table :column="column" :data="tableData" @handleClick="say" />
     </PageLayout>
 </template>
 <script lang="ts">
 import PageLayout from '@/components/PageLayout.vue'
+import QueryForm from '@/components/QueryForm.vue'
 import Table from '@/components/base/Table.vue'
-import { reactive } from 'vue'
+import { formItem, buttons } from '../pageData'
+import { reactive, toRefs } from 'vue'
 export default {
     name: 'AllOrders',
-    components: { PageLayout, Table },
+    components: { PageLayout, QueryForm, Table },
     setup() {
         const say = () => {
             console.log('子组件触发');
         }
-        const search = () => {
-            console.log('查询');
+        const handleQuery = (query: string) => {
+            console.log('查询', query, formModel);
         }
         const column = [
             {
@@ -77,13 +82,19 @@ export default {
                 address: 'No. 189, Grove St, Los Angeles',
             }
         ]
+        const formModel = {
+            name: ''
+        }
         const data = reactive({
             column,
-            tableData
+            tableData,
+            formModel
         })
         return {
-            data,
-            search,
+            ...toRefs(data),
+            formItem,
+            buttons,
+            handleQuery,
             say
         }
     }
