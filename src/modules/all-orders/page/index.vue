@@ -8,7 +8,12 @@
                 @btnClick="handleQuery"
             />
         </template>
-        <Table :column="column" :data="tableData" @handleClick="say" />
+        <Table
+            :column="column"
+            :data="tableData"
+            :pagination="pagination"
+            @pageChange="pageChange"
+        />
     </PageLayout>
 </template>
 <script lang="ts">
@@ -16,16 +21,30 @@ import PageLayout from '@/components/PageLayout.vue'
 import QueryForm from '@/components/QueryForm.vue'
 import Table from '@/components/base/Table.vue'
 import { formItem, buttons } from '../pageData'
-import { reactive, toRefs } from 'vue'
+import { reactive, onBeforeMount, computed, toRefs } from 'vue'
+import { useStore } from 'vuex'
 export default {
     name: 'AllOrders',
     components: { PageLayout, QueryForm, Table },
     setup() {
-        const say = () => {
-            console.log('子组件触发');
+        const store = useStore()
+        const tableData = computed(() => {
+            return store.getters['all-orders/orderList']
+        })
+        const pagination = computed(() => {
+            return store.getters['all-orders/pagination']
+        })
+        const pageChange = (page: number) => {
+            console.log('子组件触发', page);
+            const params = {
+                page
+            }
+            query(params)
         }
-        const handleQuery = (query: string) => {
-            console.log('查询', query, formModel);
+        const handleQuery = (action: string) => {
+            console.log('查询', action, formModel);
+            query()
+
         }
         const column = [
             {
@@ -56,46 +75,28 @@ export default {
                 label: '地址',
             }
         ]
-        const tableData = [
-            {
-                date: 1639503096067,
-                name: 'Tom',
-                tag: '1',
-                address: 'No. 189, Grove St, Los Angeles',
-            },
-            {
-                date: 1639503096067,
-                name: 'Tom',
-                tag: '2',
-                address: 'No. 189, Grove St, Los Angeles',
-            },
-            {
-                date: 1631399990000,
-                name: 'Tom',
-                tag: '3',
-                address: 'No. 189, Grove St, Los Angeles',
-            },
-            {
-                date: 1639503096067,
-                name: 'Tom',
-                tag: '4',
-                address: 'No. 189, Grove St, Los Angeles',
-            }
-        ]
+        const query = (params = {}) => {
+            store.dispatch('all-orders/getOrderList', { ...formModel, ...params })
+        }
         const formModel = {
             name: ''
         }
         const data = reactive({
             column,
             tableData,
-            formModel
+            pagination,
+            formModel,
+        })
+        onBeforeMount(() => {
+            query()
         })
         return {
             ...toRefs(data),
             formItem,
             buttons,
             handleQuery,
-            say
+            pageChange,
+            query
         }
     }
 

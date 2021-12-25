@@ -20,5 +20,7 @@ export default {
 <style lang="scss" scoped>
 .toolbar {
   text-align: left;
+  padding: 10px;
+  background: #eef1f5;
 }
 </style>

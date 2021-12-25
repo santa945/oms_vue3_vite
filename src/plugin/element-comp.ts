@@ -27,7 +27,8 @@ import {
     ElTableColumn,
     ElTag,
     ElSelect,
-    ElOption
+    ElOption,
+    ElPagination
 
 } from 'element-plus'
 
@@ -59,6 +60,7 @@ const Comp = {
     ElTableColumn,
     ElTag,
     ElSelect,
-    ElOption
+    ElOption,
+    ElPagination
 }
 export default Comp;

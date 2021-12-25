@@ -1,7 +1,7 @@
 <template>
     <div>
-        <template v-for="item in formItem" :key="item.prop">{{ item.prop }}</template>
-        <NameSelect v-model="formModel.name" />
+        <!-- <template v-for="item in formItem" :key="item.prop">{{ item.prop }}</template> -->
+        <NameSelect style="margin-right:10px;" v-model="formModel.name" />
         <el-button
             type="primary"
             size="small"

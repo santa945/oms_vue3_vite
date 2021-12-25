@@ -14,15 +14,22 @@
             </el-table-column>
         </template>
     </el-table>
-    <el-button @click="aaa"></el-button>
+    <div class="pagination">
+        <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="pageInfo.total"
+            @current-change="handlePageChange"
+        ></el-pagination>
+    </div>
 </template>
 
 <script lang="ts">
-import { ref } from "vue"
+import { ref, computed } from "vue"
 import { timestamp2date } from '@/scripts/utils'
 export default {
-    props: ['column', 'data'],
-    emits: ['handleClick'],
+    props: ['column', 'data', 'pagination'],
+    emits: ['pageChange'],
     setup(props, context) {
         console.log(props, context);
         const obj: any = {
@@ -45,10 +52,12 @@ export default {
             },
         }
         const column = ref(props.column)
-        const tableData = ref(props.data)
+        const tableData = computed(() => props.data)
+        const pageInfo = computed(() => props.pagination)
 
-        const aaa = () => {
-            context.emit('handleClick')
+        const handlePageChange = (page: number) => {
+            console.log(page);
+            context.emit('pageChange', page)
         }
         const dateFilter = (date: number) => {
             return timestamp2date(date, 'YYYY-MM-DD hh:mm:ss')
@@ -59,10 +68,20 @@ export default {
         return {
             column,
             tableData,
+            pageInfo,
             dateFilter,
             tagFilter,
-            aaa
+            handlePageChange
         }
     },
 }
 </script>
+<style lang="scss" scoped>
+.pagination {
+    overflow: hidden;
+    :deep(.el-pagination) {
+        float: right;
+        margin-top: 10px;
+    }
+}
+</style>

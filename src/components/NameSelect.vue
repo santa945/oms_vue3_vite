@@ -1,5 +1,5 @@
 <template>
-    <el-select v-model="value" placeholder="Select">
+    <el-select v-model="value" size="small" placeholder="Select">
         <el-option
             v-for="item in options"
             :key="item.value"
