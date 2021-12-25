@@ -43,6 +43,12 @@ export default {
         }
         const handleQuery = (action: string) => {
             console.log('查询', action, formModel);
+            if (action === 'reset') {
+                data.formModel = {
+                    name: ''
+                }
+                console.log('data', data);
+            }
             query()
 
         }
@@ -76,10 +82,10 @@ export default {
             }
         ]
         const query = (params = {}) => {
-            store.dispatch('all-orders/getOrderList', { ...formModel, ...params })
+            store.dispatch('all-orders/getOrderList', { ...data.formModel, ...params })
         }
         const formModel = {
-            name: ''
+            name: 'Option3'
         }
         const data = reactive({
             column,

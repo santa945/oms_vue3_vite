@@ -12,7 +12,7 @@
     </div>
 </template>
 <script lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import NameSelect from './NameSelect.vue';
 export default {
     name: "QueryForm",
@@ -20,9 +20,9 @@ export default {
     setup(props: any, context: any) {
         console.log(context, 111);
 
-        const formModel = ref(props.formModel);
-        const formItem = ref(props.formItem);
-        const buttons = ref(props.buttons);
+        const formModel = computed(() => props.formModel);
+        const formItem = computed(() => props.formItem);
+        const buttons = computed(() => props.buttons);
         const handleEmit = (type: string) => {
             console.log("handleEmit", type);
             context.emit("btnClick", type)
