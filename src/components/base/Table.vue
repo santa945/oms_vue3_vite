@@ -14,7 +14,7 @@
             </el-table-column>
         </template>
     </el-table>
-    <div class="pagination">
+    <div class="pagination" v-if="pageInfo.total">
         <el-pagination
             background
             layout="prev, pager, next"

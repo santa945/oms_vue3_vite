@@ -8,6 +8,7 @@ import {
     Timer
 } from '@element-plus/icons'
 import {
+    ElConfigProvider,
     ElContainer,
     ElAside,
     ElHeader,
@@ -28,7 +29,11 @@ import {
     ElTag,
     ElSelect,
     ElOption,
-    ElPagination
+    ElPagination,
+    ElInput,
+    ElForm,
+    ElFormItem,
+    ElDatePicker
 
 } from 'element-plus'
 
@@ -41,6 +46,7 @@ const Comp = {
     Tools,
     Timer,
 
+    ElConfigProvider,
     ElContainer,
     ElAside,
     ElHeader,
@@ -61,6 +67,10 @@ const Comp = {
     ElTag,
     ElSelect,
     ElOption,
-    ElPagination
+    ElPagination,
+    ElInput,
+    ElForm,
+    ElFormItem,
+    ElDatePicker
 }
 export default Comp;
