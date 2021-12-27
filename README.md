@@ -18,6 +18,21 @@
   > https://cn.vitejs.dev/guide/features.html#client-types
   * 解决方法：补充类型`vite-env.d.ts`，内容为 `/// <reference types="vite/client" />` 三斜杆是ts语法，不是注释
 
+### `<component :is="fn()">`不生效
+* Vue3异步组件需要单独定义，使用如下
+```js
+import { defineAsyncComponent } from 'vue'
+const obj = {
+        prop: 'name',
+        ctrlComponent: defineAsyncComponent(() => import('@/components/NameSelect.vue'))
+    }
+```
+
+```html
+// 组件使用---
+<component :is="obj.ctrlComponent">
+```
+
 ## 报错
 
 #### 按需引入的问题
@@ -31,3 +46,4 @@ at getPkgVersion (/Users/**/node_modules/vite-plugin-components/dist/index.js:63
 * 解决方式：
   * 使用手动按需引入的方法代替自动按需引入的方法，不要装`unplugin-vue-components`和`unplugin-auto-import`
   * 安装`unplugin-element-plus`, 在`vite.config.ts`中配置Plugin。
+
