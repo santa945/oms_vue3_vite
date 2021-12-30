@@ -3,7 +3,7 @@
     "permission": [
         {
             "catalogName": "非商店订单",
-            "icon": "location",
+            "icon": "Trophy",
             "catalogCode": "brand-orders",
             "children": [
                 {

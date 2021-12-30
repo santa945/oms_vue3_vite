@@ -3,12 +3,17 @@ import App from './App.vue'
 import router from './routers'
 import store from './store'
 import './index.scss'
-import Comp from './plugin/element-comp'
-
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+import * as ElIcons from '@element-plus/icons-vue'
 const app = createApp(App)
-for (let key in Comp) {
-    app.component(key, Comp[key])
+for (const name in ElIcons) {
+    app.component(name, (ElIcons as any)[name])
 }
+
+
+app.use(ElementPlus, { locale: zhCn })
 app.use(router)
 app.use(store)
 app.mount('#app');

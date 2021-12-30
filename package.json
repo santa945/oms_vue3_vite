@@ -8,8 +8,9 @@
     "build": "vite build --mode prod"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^0.2.4",
     "axios": "^0.24.0",
-    "element-plus": "^1.2.0-beta.5",
+    "element-plus": "^1.2.0-beta.6",
     "lodash": "^4.17.21",
     "sass": "^1.44.0",
     "sass-loader": "^12.3.0",

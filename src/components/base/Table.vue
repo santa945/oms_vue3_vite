@@ -17,7 +17,7 @@
     <div class="pagination" v-if="pageInfo.total">
         <el-pagination
             background
-            layout="prev, pager, next"
+            layout="total, sizes, prev, pager, next"
             :total="pageInfo.total"
             @current-change="handlePageChange"
         ></el-pagination>
