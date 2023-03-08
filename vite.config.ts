@@ -9,7 +9,7 @@ export default (({ mode }) => {
         server: {
             open: true,
             host: '127.0.0.1',
-            port: 2021,
+            port: 2023,
             proxy: {
                 '/api': {
                     target: '127.0.0.1:3434',
