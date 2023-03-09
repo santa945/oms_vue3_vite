@@ -2,7 +2,7 @@
     "userName": "开发者小曾",
     "permission": [
         {
-            "catalogName": "非商店订单",
+            "catalogName": "订单管理",
             "icon": "Trophy",
             "catalogCode": "brand-orders",
             "children": [

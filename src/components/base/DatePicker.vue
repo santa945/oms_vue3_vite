@@ -101,6 +101,13 @@ import {
   ref,
   watch,
 } from "vue"
+import { ElIcon } from "element-plus"
+import {
+  DArrowLeft,
+  ArrowLeft,
+  DArrowRight,
+  ArrowRight,
+} from "@element-plus/icons-vue"
 import type { Ref } from "vue"
 
 interface Props {
@@ -417,6 +424,7 @@ const formatTime = (date = new Date(), format = "yyyy/MM/dd") => {
   .day-reduce,
   .day-add {
     width: 20%;
+    text-align: center;
     .arrow-icon {
       cursor: pointer;
       color: #ccc;

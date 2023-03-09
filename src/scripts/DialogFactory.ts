@@ -15,18 +15,18 @@ export class DialogFactory {
         const instance = createApp(DialogClass, {
             modelValue: true,
             ...propsData,
-            onCancel: async () => {
+            onCancel: async (data: any) => {
                 if (onCancel) {
-                    await onCancel()
+                    await onCancel(data)
                 }
                 instance.unmount();
                 if (document.body.contains(mountNode)) {
                     document.body.removeChild(mountNode);
                 }
             },
-            onConfirm: async () => {
+            onConfirm: async (data: any) => {
                 if (onConfirm) {
-                    await onConfirm()
+                    await onConfirm(data)
                 }
                 instance.unmount();
                 if (document.body.contains(mountNode)) {
